@@ -1,0 +1,22 @@
+Billing FAQ
+
+How do I update my payment method?
+To update your payment method, go to Account Settings > Billing > Payment Methods. Click "Add Payment Method" and enter your new card details. You can set it as default and remove old cards from the same page.
+
+Why was I charged twice?
+Duplicate charges can occur during payment processing errors. If you see two identical charges within 24 hours, the second one will automatically reverse within 3–5 business days. If it does not reverse, contact support with your transaction ID.
+
+How do I cancel my subscription?
+You can cancel your subscription at any time from Account Settings > Subscription > Cancel Plan. Your access continues until the end of the current billing period. No refunds are issued for partial months.
+
+What happens if my payment fails?
+If a payment fails, you will receive an email notification. We retry the payment after 3 days and again after 7 days. If the payment still fails after two retries, your account will be suspended. Update your payment method to restore access.
+
+Can I get a refund?
+Refunds are available within 7 days of initial purchase for annual plans. Monthly plan charges are non-refundable. To request a refund, contact billing support with your order ID.
+
+How do I download my invoices?
+Invoices are available under Account Settings > Billing > Invoice History. You can download PDF invoices for any past charge. Invoices are also emailed automatically after each successful payment.
+
+What is the difference between monthly and annual billing?
+Monthly billing is charged every 30 days at the standard rate. Annual billing is charged once per year at a 20% discount. You can switch billing cycles at any time; the change takes effect at your next renewal date.

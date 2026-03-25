@@ -1,0 +1,22 @@
+Account Management Guide
+
+How do I reset my password?
+To reset your password, click "Forgot Password" on the login page and enter your registered email address. You will receive a reset link within 5 minutes. The link expires after 1 hour. If you do not receive the email, check your spam folder or contact support.
+
+How do I change my email address?
+Go to Account Settings > Profile > Email Address. Enter your new email and click Save. A verification link will be sent to the new address. Your email will not change until you click the verification link.
+
+How do I enable two-factor authentication (2FA)?
+Two-factor authentication can be enabled under Account Settings > Security > Two-Factor Authentication. We support authenticator apps (Google Authenticator, Authy) and SMS. We recommend using an authenticator app for stronger security.
+
+How do I delete my account?
+Account deletion is permanent and cannot be undone. To delete your account, go to Account Settings > Danger Zone > Delete Account. You will be asked to confirm by typing your email address. All data will be permanently deleted within 30 days.
+
+How do I transfer my account to another person?
+Account transfers are not supported directly. The new owner must create their own account and you can invite them to your workspace. Contact support if you need to transfer a paid subscription.
+
+What do I do if my account was hacked?
+Immediately reset your password and revoke all active sessions under Account Settings > Security > Active Sessions. Enable 2FA if not already active. Contact support to report the incident and audit recent activity.
+
+How many team members can I invite?
+The number of team members depends on your plan. Starter plans allow up to 5 members. Pro plans allow up to 25 members. Enterprise plans have unlimited members. Go to Account Settings > Team to manage invitations.

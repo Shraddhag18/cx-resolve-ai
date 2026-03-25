@@ -1,0 +1,22 @@
+Technical Support Documentation
+
+The application is not loading. What should I do?
+If the application is not loading, first clear your browser cache and cookies (Ctrl+Shift+Delete on Chrome/Firefox). Try a hard refresh with Ctrl+Shift+R. If the issue persists, try a different browser or disable browser extensions. Check our status page for any ongoing incidents.
+
+How do I report a bug?
+To report a bug, click the "?" icon in the bottom-right corner of the application and select "Report a Bug." Include a description of the issue, the steps to reproduce it, and your browser/OS version. Screenshots or screen recordings are very helpful. Our engineering team reviews all reports within 24 hours.
+
+Why is the application running slowly?
+Slow performance can be caused by a poor internet connection, high server load, or large data sets. First, check your internet speed. If the problem persists, try clearing your browser cache. For data-heavy pages, try filtering or paginating your results. Contact support if slowness is consistent across sessions.
+
+How do I integrate with the REST API?
+Our REST API documentation is available at /api/docs. Authentication uses Bearer tokens which you can generate under Account Settings > API Keys. All endpoints accept and return JSON. Rate limits are 1000 requests/minute per API key. Webhook support is available for real-time event notifications.
+
+How do I export my data?
+Data exports are available under Account Settings > Data > Export. You can export in CSV or JSON format. Large exports are processed asynchronously and you will receive an email with a download link when ready. Export files are available for 7 days.
+
+Is there a mobile app?
+Yes, we have iOS and Android apps available on the App Store and Google Play. Mobile apps support all core features. Push notifications can be configured under Account Settings > Notifications.
+
+How do I set up webhooks?
+Webhooks allow you to receive real-time event notifications. Go to Account Settings > Integrations > Webhooks to add a webhook URL. Select the events you want to subscribe to. We send a POST request with a JSON payload to your URL. Use the secret key provided to verify the request signature.

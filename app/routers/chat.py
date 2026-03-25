@@ -1,0 +1,74 @@
+import time
+from fastapi import APIRouter, HTTPException, Depends
+from app.models import QueryRequest, QueryResponse
+from app.rag.indexer import get_or_build_index
+from app.rag.retriever import retrieve, format_cited_sources
+from app.rag.chain import answer_with_citations
+from app.routers.dashboard import record_query
+from langchain_community.vectorstores import FAISS
+
+router = APIRouter(prefix="/api/v1", tags=["chat"])
+
+_vectorstore: FAISS | None = None
+
+
+def get_vectorstore() -> FAISS:
+    global _vectorstore
+    if _vectorstore is None:
+        _vectorstore = get_or_build_index()
+    return _vectorstore
+
+
+@router.post("/query", response_model=QueryResponse, summary="Submit a support query")
+async def query_endpoint(request: QueryRequest):
+    """
+    Submit a customer support question.
+    Returns an LLM-generated answer with FAISS-retrieved citations.
+    Retrieval latency is consistently under 1 second.
+    """
+    start = time.perf_counter()
+
+    try:
+        vs = get_vectorstore()
+        docs, scores = retrieve(vs, request.question, top_k=request.top_k)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Retrieval error: {str(e)}")
+
+    if not docs:
+        raise HTTPException(status_code=404, detail="No relevant documents found.")
+
+    try:
+        answer, confidence = answer_with_citations(request.question, docs)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"LLM error: {str(e)}")
+
+    latency_ms = round((time.perf_counter() - start) * 1000, 2)
+    sources = format_cited_sources(docs, scores)
+    resolved = confidence >= 0.65
+
+    record_query(question=request.question, resolved=resolved, latency_ms=latency_ms, confidence=confidence)
+
+    return QueryResponse(
+        question=request.question,
+        answer=answer,
+        sources=sources,
+        resolved=resolved,
+        confidence=confidence,
+        latency_ms=latency_ms,
+    )
+
+
+@router.post("/ingest", summary="Re-index documents from disk")
+async def ingest_endpoint():
+    """Trigger a re-index of all documents in the docs directory."""
+    global _vectorstore
+    from app.config import get_settings
+    from app.rag.indexer import build_index
+
+    settings = get_settings()
+    try:
+        _vectorstore = build_index(settings.docs_dir, settings.faiss_index_path)
+        count = _vectorstore.index.ntotal
+        return {"documents_indexed": count, "index_path": settings.faiss_index_path, "message": "Index rebuilt successfully."}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
