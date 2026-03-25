@@ -1,8 +1,11 @@
 from pydantic_settings import BaseSettings
+from pydantic import ConfigDict
 from functools import lru_cache
 
 
 class Settings(BaseSettings):
+    model_config = ConfigDict(env_file=".env")
+
     openai_api_key: str
     openai_model: str = "gpt-4o-mini"
     openai_embedding_model: str = "text-embedding-3-small"
@@ -12,9 +15,6 @@ class Settings(BaseSettings):
     max_tokens: int = 1024
     app_name: str = "CX Resolve AI"
     app_version: str = "1.0.0"
-
-    class Config:
-        env_file = ".env"
 
 
 @lru_cache()

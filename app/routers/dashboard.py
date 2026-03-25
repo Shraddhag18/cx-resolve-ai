@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from collections import defaultdict
 from app.models import DashboardStats, TicketResolution
 import uuid
@@ -17,7 +17,7 @@ def record_query(question: str, resolved: bool, latency_ms: float, confidence: f
         "resolved": resolved,
         "latency_ms": latency_ms,
         "confidence": confidence,
-        "timestamp": datetime.utcnow(),
+        "timestamp": datetime.now(timezone.utc),
     })
 
 
@@ -28,7 +28,7 @@ async def dashboard():
     avg latency, confidence scores, and recent tickets.
     Mirrors the weekly dashboards used to track 40% manual ticket reduction.
     """
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
     week_start = now - timedelta(days=now.weekday())
     week_start = week_start.replace(hour=0, minute=0, second=0, microsecond=0)
 

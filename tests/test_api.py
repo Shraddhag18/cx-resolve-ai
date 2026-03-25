@@ -2,7 +2,7 @@
 import pytest
 from unittest.mock import patch, MagicMock
 from fastapi.testclient import TestClient
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 
 def make_mock_vectorstore():

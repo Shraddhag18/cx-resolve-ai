@@ -1,7 +1,7 @@
 """Unit tests for RAG components (no OpenAI calls required)."""
 import pytest
 from unittest.mock import MagicMock, patch
-from langchain.schema import Document
+from langchain_core.documents import Document
 from app.rag.retriever import format_cited_sources
 from app.rag.chain import build_context
 

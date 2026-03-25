@@ -1,5 +1,5 @@
 import time
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException
 from app.models import QueryRequest, QueryResponse
 from app.rag.indexer import get_or_build_index
 from app.rag.retriever import retrieve, format_cited_sources
