@@ -2,8 +2,8 @@ import os
 import glob
 from pathlib import Path
 from langchain_community.vectorstores import FAISS
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.schema import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_core.documents import Document
 from app.rag.embedder import get_embeddings
 from app.config import get_settings
 

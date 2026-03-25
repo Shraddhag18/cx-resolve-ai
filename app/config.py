@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     max_tokens: int = 1024
     app_name: str = "CX Resolve AI"
     app_version: str = "1.0.0"
+    app_api_key: str = "cx-resolve-2026-secret"
 
 
 @lru_cache()

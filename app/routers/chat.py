@@ -1,13 +1,14 @@
 import time
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Security
 from app.models import QueryRequest, QueryResponse
 from app.rag.indexer import get_or_build_index
 from app.rag.retriever import retrieve, format_cited_sources
 from app.rag.chain import answer_with_citations
 from app.routers.dashboard import record_query
+from app.auth import verify_api_key
 from langchain_community.vectorstores import FAISS
 
-router = APIRouter(prefix="/api/v1", tags=["chat"])
+router = APIRouter(prefix="/api/v1", tags=["chat"], dependencies=[Security(verify_api_key)])
 
 _vectorstore: FAISS | None = None
 

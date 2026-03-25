@@ -15,6 +15,10 @@ def make_mock_vectorstore():
     return vs
 
 
+API_KEY = "cx-resolve-2026-secret"
+AUTH = {"X-API-Key": API_KEY}
+
+
 @pytest.fixture
 def client():
     with patch("app.routers.chat.get_vectorstore", return_value=make_mock_vectorstore()), \
@@ -39,8 +43,16 @@ def test_health(client):
     assert resp.json()["status"] == "ok"
 
 
-def test_dashboard_empty(client):
+def test_unauthorized(client):
     resp = client.get("/api/v1/dashboard")
+    assert resp.status_code == 401
+
+    resp = client.get("/api/v1/dashboard", headers={"X-API-Key": "wrong"})
+    assert resp.status_code == 401
+
+
+def test_dashboard_empty(client):
+    resp = client.get("/api/v1/dashboard", headers=AUTH)
     assert resp.status_code == 200
     data = resp.json()
     assert "total_queries" in data

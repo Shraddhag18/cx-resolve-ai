@@ -1,10 +1,11 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Security
+from app.auth import verify_api_key
 from datetime import datetime, timedelta, timezone
 from collections import defaultdict
 from app.models import DashboardStats, TicketResolution
 import uuid
 
-router = APIRouter(prefix="/api/v1", tags=["dashboard"])
+router = APIRouter(prefix="/api/v1", tags=["dashboard"], dependencies=[Security(verify_api_key)])
 
 # In-memory store for demo; replace with PostgreSQL in production
 _query_log: list[dict] = []
