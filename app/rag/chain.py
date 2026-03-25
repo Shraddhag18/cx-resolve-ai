@@ -1,6 +1,6 @@
 from langchain_openai import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
-from langchain.schema import Document
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.documents import Document
 from app.config import get_settings
 
 SYSTEM_PROMPT = """You are CX Resolve, a Tier-1 customer support AI assistant.
