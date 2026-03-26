@@ -46,6 +46,10 @@ def create_app() -> FastAPI:
     async def health():
         return {"status": "ok", "version": settings.app_version}
 
+    @app.get("/config", include_in_schema=False)
+    async def config():
+        return {"api_key": settings.app_api_key}
+
     static_dir = Path(__file__).parent.parent / "static"
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
 

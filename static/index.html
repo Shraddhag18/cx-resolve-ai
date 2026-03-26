@@ -35,62 +35,6 @@
       overflow: hidden;
     }
 
-    /* ── Login overlay ── */
-    #login-overlay {
-      position: fixed; inset: 0;
-      background: rgba(10,10,20,0.92);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 100;
-      backdrop-filter: blur(6px);
-    }
-    .login-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 40px 36px;
-      width: 380px;
-      text-align: center;
-    }
-    .login-card .logo {
-      width: 52px; height: 52px;
-      background: var(--accent);
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 24px;
-    }
-    .login-card h2 { font-size: 1.4rem; margin-bottom: 6px; }
-    .login-card p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 24px; }
-    .login-card input {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--text);
-      font-size: 0.95rem;
-      outline: none;
-      margin-bottom: 14px;
-    }
-    .login-card input:focus { border-color: var(--accent); }
-    .login-card button {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: none;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .login-card button:hover { background: var(--accent-hover); }
-    #login-error {
-      color: var(--red); font-size: 0.82rem;
-      margin-top: 10px; display: none;
-    }
-
     /* ── Layout ── */
     header {
       display: flex; align-items: center; justify-content: space-between;
@@ -324,18 +268,6 @@
 </head>
 <body>
 
-<!-- Login -->
-<div id="login-overlay">
-  <div class="login-card">
-    <div class="logo">🤖</div>
-    <h2>CX Resolve AI</h2>
-    <p>Enter your API key to access the support assistant</p>
-    <input type="password" id="api-key-input" placeholder="Enter API key..." autocomplete="off" />
-    <button onclick="login()">Access Dashboard</button>
-    <div id="login-error">Invalid API key. Please try again.</div>
-  </div>
-</div>
-
 <header>
   <div class="header-left">
     <div class="header-logo">🤖</div>
@@ -346,8 +278,6 @@
   </div>
   <div class="header-right">
     <span><span class="status-dot"></span>Online</span>
-    <span id="header-key" style="font-family:monospace;font-size:0.75rem;"></span>
-    <span id="logout-btn" onclick="logout()" style="cursor:pointer;color:#ef4444;">Sign out</span>
   </div>
 </header>
 
@@ -394,6 +324,9 @@
 <script>
   let API_KEY = '';
 
+  // Fetch API key from server automatically on load
+  fetch('/config').then(r => r.json()).then(d => { API_KEY = d.api_key; });
+
   // Auto-resize textarea
   const input = document.getElementById('question-input');
   input.addEventListener('input', () => {
@@ -403,35 +336,6 @@
   input.addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendQuery(); }
   });
-
-  function login() {
-    const key = document.getElementById('api-key-input').value.trim();
-    if (!key) return;
-    // Test key with a real request
-    fetch('/api/v1/dashboard', { headers: { 'X-API-Key': key } })
-      .then(r => {
-        if (r.ok) {
-          API_KEY = key;
-          document.getElementById('login-overlay').style.display = 'none';
-          document.getElementById('header-key').textContent = key.slice(0,8) + '···';
-          loadDashboard();
-        } else {
-          document.getElementById('login-error').style.display = 'block';
-        }
-      })
-      .catch(() => { document.getElementById('login-error').style.display = 'block'; });
-  }
-
-  document.getElementById('api-key-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter') login();
-  });
-
-  function logout() {
-    API_KEY = '';
-    document.getElementById('login-overlay').style.display = 'flex';
-    document.getElementById('api-key-input').value = '';
-    document.getElementById('login-error').style.display = 'none';
-  }
 
   function switchTab(tab, btn) {
     document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
