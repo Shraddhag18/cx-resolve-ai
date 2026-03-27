@@ -8,7 +8,7 @@ import app.routers.chat as chat_router
 
 router = APIRouter(prefix="/api/v1", tags=["documents"], dependencies=[Security(verify_api_key)])
 
-MAX_SIZE_BYTES = 10 * 1024 * 1024  # 10 MB
+MAX_SIZE_BYTES = 10 * 1024 * 1024 * 1024  # 10 GB
 
 
 @router.post("/upload", summary="Upload a support document and re-index")
@@ -25,7 +25,7 @@ async def upload_document(file: UploadFile = File(...)):
 
     content = await file.read()
     if len(content) > MAX_SIZE_BYTES:
-        raise HTTPException(status_code=413, detail="File exceeds 10 MB limit.")
+        raise HTTPException(status_code=413, detail="File exceeds 10 GB limit.")
 
     dest = docs_dir / file.filename
     dest.write_bytes(content)

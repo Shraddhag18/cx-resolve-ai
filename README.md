@@ -184,7 +184,7 @@ Three tabs are available:
 
 1. Go to the **Documents** tab
 2. Drag and drop a file, or click to browse
-3. Supported formats: `.pdf`, `.docx`, `.txt` (max 10 MB)
+3. Supported formats: `.pdf`, `.docx`, `.txt` (max 10 GB)
 4. The document is parsed, chunked, embedded, and indexed automatically
 
 ### Via the API
