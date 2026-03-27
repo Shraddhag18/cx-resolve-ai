@@ -5,7 +5,7 @@ from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 from pathlib import Path
 from app.config import get_settings
-from app.routers import chat, dashboard
+from app.routers import chat, dashboard, upload
 
 
 @asynccontextmanager
@@ -41,6 +41,7 @@ def create_app() -> FastAPI:
 
     app.include_router(chat.router)
     app.include_router(dashboard.router)
+    app.include_router(upload.router)
 
     @app.get("/health", tags=["health"])
     async def health():

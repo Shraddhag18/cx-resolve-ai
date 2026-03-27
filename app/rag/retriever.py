@@ -11,25 +11,34 @@ def retrieve(vectorstore: FAISS, query: str, top_k: int = 5) -> tuple[list[Docum
     return docs, scores
 
 
+MIN_RELEVANCE = 0.45
+
+
 def format_cited_sources(docs: list[Document], scores: list[float]) -> list[CitedSource]:
-    """Convert retrieved documents into CitedSource objects."""
+    """Convert retrieved documents into CitedSource objects, filtering low-relevance results."""
     sources = []
     seen_titles = set()
     for doc, score in zip(docs, scores):
         title = doc.metadata.get("title", "Unknown")
         doc_id = doc.metadata.get("doc_id", "unknown")
 
-        # Deduplicate by title while keeping best score
-        if title in seen_titles:
+        # FAISS L2 distance → convert to 0–1 similarity
+        relevance = max(0.0, 1.0 - score / 2.0)
+
+        # Skip low-relevance and duplicate sources
+        if relevance < MIN_RELEVANCE or title in seen_titles:
             continue
         seen_titles.add(title)
 
-        excerpt = doc.page_content[:300].strip()
-        if len(doc.page_content) > 300:
-            excerpt += "..."
+        # Strip document header line from excerpt (first non-empty line if it's a title)
+        content = doc.page_content.strip()
+        lines = content.splitlines()
+        if lines and lines[0].strip() and not lines[0].strip().endswith("?"):
+            content = "\n".join(lines[1:]).strip()
 
-        # FAISS L2 distance → convert to 0–1 similarity
-        relevance = max(0.0, 1.0 - score / 2.0)
+        excerpt = content[:250].strip()
+        if len(content) > 250:
+            excerpt += "..."
 
         sources.append(
             CitedSource(

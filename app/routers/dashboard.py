@@ -11,15 +11,17 @@ router = APIRouter(prefix="/api/v1", tags=["dashboard"], dependencies=[Security(
 _query_log: list[dict] = []
 
 
-def record_query(question: str, resolved: bool, latency_ms: float, confidence: float):
+def record_query(question: str, resolved: bool, latency_ms: float, confidence: float) -> str:
+    ticket_id = str(uuid.uuid4())[:8]
     _query_log.append({
-        "ticket_id": str(uuid.uuid4())[:8],
+        "ticket_id": ticket_id,
         "question": question,
         "resolved": resolved,
         "latency_ms": latency_ms,
         "confidence": confidence,
         "timestamp": datetime.now(timezone.utc),
     })
+    return ticket_id
 
 
 @router.get("/dashboard", response_model=DashboardStats, summary="Weekly resolution dashboard")

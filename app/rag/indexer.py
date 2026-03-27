@@ -5,24 +5,22 @@ from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from app.rag.embedder import get_embeddings
+from app.rag.parser import parse_document, SUPPORTED_EXTENSIONS
 from app.config import get_settings
 
 
 def load_documents(docs_dir: str) -> list[Document]:
-    """Load all .txt files from a directory as LangChain Documents."""
+    """Load all supported documents (.txt, .pdf, .docx) from a directory."""
     documents = []
-    pattern = os.path.join(docs_dir, "**", "*.txt")
-    for filepath in glob.glob(pattern, recursive=True):
-        title = Path(filepath).stem.replace("_", " ").title()
-        with open(filepath, "r", encoding="utf-8") as f:
-            content = f.read().strip()
-        if content:
-            documents.append(
-                Document(
-                    page_content=content,
-                    metadata={"source": filepath, "title": title, "doc_id": Path(filepath).stem},
-                )
-            )
+    for suffix in SUPPORTED_EXTENSIONS:
+        pattern = os.path.join(docs_dir, "**", f"*{suffix}")
+        for filepath in glob.glob(pattern, recursive=True):
+            try:
+                doc = parse_document(filepath)
+                if doc.page_content:
+                    documents.append(doc)
+            except Exception as e:
+                print(f"Warning: Could not parse {filepath}: {e}")
     return documents
 
 
@@ -43,7 +41,7 @@ def build_index(docs_dir: str, index_path: str) -> FAISS:
     """Load documents, chunk them, embed, and save FAISS index."""
     documents = load_documents(docs_dir)
     if not documents:
-        raise ValueError(f"No .txt documents found in {docs_dir}")
+        raise ValueError(f"No supported documents found in {docs_dir}")
 
     chunks = chunk_documents(documents)
     embeddings = get_embeddings()

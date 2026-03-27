@@ -2,7 +2,8 @@ import time
 from fastapi import APIRouter, HTTPException, Security
 from app.models import QueryRequest, QueryResponse
 from app.rag.indexer import get_or_build_index
-from app.rag.retriever import retrieve, format_cited_sources
+from app.rag.agent import agentic_retrieve
+from app.rag.retriever import format_cited_sources
 from app.rag.chain import answer_with_citations
 from app.routers.dashboard import record_query
 from app.auth import verify_api_key
@@ -24,14 +25,14 @@ def get_vectorstore() -> FAISS:
 async def query_endpoint(request: QueryRequest):
     """
     Submit a customer support question.
-    Returns an LLM-generated answer with FAISS-retrieved citations.
-    Retrieval latency is consistently under 1 second.
+    Runs an agentic RAG pipeline: query decomposition → iterative retrieval →
+    rewrite-on-failure → cited answer generation.
     """
     start = time.perf_counter()
 
     try:
         vs = get_vectorstore()
-        docs, scores = retrieve(vs, request.question, top_k=request.top_k)
+        docs, scores, agent_steps = agentic_retrieve(vs, request.question, top_k=request.top_k)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Retrieval error: {str(e)}")
 
@@ -47,15 +48,17 @@ async def query_endpoint(request: QueryRequest):
     sources = format_cited_sources(docs, scores)
     resolved = confidence >= 0.65
 
-    record_query(question=request.question, resolved=resolved, latency_ms=latency_ms, confidence=confidence)
+    ticket_id = record_query(question=request.question, resolved=resolved, latency_ms=latency_ms, confidence=confidence)
 
     return QueryResponse(
+        ticket_id=ticket_id,
         question=request.question,
         answer=answer,
         sources=sources,
         resolved=resolved,
         confidence=confidence,
         latency_ms=latency_ms,
+        agent_steps=agent_steps,
     )
 
 

@@ -8,6 +8,11 @@ class QueryRequest(BaseModel):
     top_k: Optional[int] = Field(default=5, ge=1, le=20, description="Number of documents to retrieve")
 
 
+class AgentStep(BaseModel):
+    step: str
+    detail: str
+
+
 class CitedSource(BaseModel):
     doc_id: str
     title: str
@@ -16,12 +21,14 @@ class CitedSource(BaseModel):
 
 
 class QueryResponse(BaseModel):
+    ticket_id: str
     question: str
     answer: str
     sources: List[CitedSource]
     resolved: bool
     confidence: float
     latency_ms: float
+    agent_steps: List[AgentStep] = []
     timestamp: datetime = Field(default_factory=datetime.utcnow)
 
 
