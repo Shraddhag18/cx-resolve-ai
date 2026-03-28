@@ -4,7 +4,8 @@ openai==1.57.0
 langchain==0.3.13
 langchain-openai==0.2.14
 langchain-community==0.3.13
-faiss-cpu==1.9.0.post1
+langchain-text-splitters==0.3.4
+faiss-cpu==1.8.0
 pydantic==2.10.3
 pydantic-settings==2.7.0
 python-dotenv==1.0.1
@@ -12,8 +13,5 @@ tiktoken==0.8.0
 httpx==0.28.1
 aiofiles==24.1.0
 python-multipart==0.0.20
-datasets>=2.20.0
 pypdf==5.1.0
 python-docx==1.1.2
-pytest==8.3.4
-pytest-asyncio==0.25.0

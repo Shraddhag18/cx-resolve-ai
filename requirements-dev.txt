@@ -1,0 +1,4 @@
+-r requirements.txt
+datasets>=2.20.0
+pytest==8.3.4
+pytest-asyncio==0.25.0
