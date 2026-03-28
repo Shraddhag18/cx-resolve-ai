@@ -1,0 +1,46 @@
+Account Management Guide
+
+Q: How do I reset my password?
+A: Click "Forgot Password" on the login page, enter your registered email address, and you will receive a reset link within 5 minutes. The link expires after 1 hour. If you do not receive the email, check your spam folder or contact support.
+
+Q: How do I change my email address?
+A: Go to Account Settings > Profile > Email Address. Enter your new email and click Save. A verification link will be sent to the new address. Your email will not change until you click the verification link.
+
+Q: How do I enable two-factor authentication (2FA)?
+A: Go to Account Settings > Security > Two-Factor Authentication. We support authenticator apps (Google Authenticator, Authy) and SMS. We recommend using an authenticator app for stronger security.
+
+Q: How do I delete my account?
+A: Account deletion is permanent. Go to Account Settings > Danger Zone > Delete Account. You will be asked to confirm by typing your email address. All data is permanently deleted within 30 days.
+
+Q: What do I do if my account was hacked?
+A: Immediately reset your password and revoke all active sessions under Account Settings > Security > Active Sessions. Enable 2FA if not already active. Contact support to report the incident and audit recent activity.
+
+Q: How do I update my profile information?
+A: Go to Account Settings > Profile. You can update your name, phone number, and profile picture. Click Save to apply changes.
+
+Q: How do I change my username?
+A: Go to Account Settings > Profile > Username. Usernames can be changed once every 30 days. Your old username becomes available for others after 14 days.
+
+Q: How many devices can I be logged into simultaneously?
+A: You can be logged into up to 5 devices at the same time. To manage active sessions, go to Account Settings > Security > Active Sessions.
+
+Q: How do I transfer my account to another person?
+A: Account transfers are not directly supported. The new owner must create their own account. Contact support if you need to transfer a paid subscription.
+
+Q: How do I invite team members?
+A: Go to Account Settings > Team > Invite Members. Enter their email address and select a role. Starter plans allow up to 5 members, Pro plans up to 25, Enterprise plans have unlimited members.
+
+Q: How do I change my account language?
+A: Go to Account Settings > Preferences > Language. Select your preferred language from the dropdown and click Save. Changes take effect immediately.
+
+Q: What happens to my data if I cancel my account?
+A: Your data is retained for 30 days after cancellation, during which you can reactivate your account. After 30 days, all data is permanently deleted and cannot be recovered.
+
+Q: How do I download my account data?
+A: Go to Account Settings > Privacy > Export Data. You will receive an email with a download link within 24 hours. The export includes all your profile data, activity history, and content.
+
+Q: How do I set up single sign-on (SSO)?
+A: SSO is available on Enterprise plans. Go to Account Settings > Security > Single Sign-On and follow the configuration guide for your identity provider (Okta, Azure AD, Google Workspace).
+
+Q: How do I deactivate my account temporarily?
+A: Go to Account Settings > Account Status > Deactivate. Your account will be hidden and inaccessible until you log in and reactivate it. Your data is preserved during deactivation.
