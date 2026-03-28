@@ -203,6 +203,16 @@ Drop multiple files into `data/sample_docs/` then run:
 python scripts/ingest.py
 ```
 
+### Download the full support dataset (26K+ real Q&A pairs)
+
+The repo includes a script to download the **Bitext Customer Support dataset** from Hugging Face — 26,872 real Q&A pairs across 11 categories (account, billing, refund, shipping, etc.) — producing 61,000+ FAISS vectors:
+
+```bash
+python scripts/download_dataset.py
+```
+
+This populates `data/sample_docs/` with 11 category files and rebuilds the index automatically.
+
 ---
 
 ## API Reference

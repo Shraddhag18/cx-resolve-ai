@@ -12,6 +12,7 @@ tiktoken==0.8.0
 httpx==0.28.1
 aiofiles==24.1.0
 python-multipart==0.0.20
+datasets>=2.20.0
 pypdf==5.1.0
 python-docx==1.1.2
 pytest==8.3.4
