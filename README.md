@@ -1,5 +1,7 @@
 # CX Resolve AI
 
+> **Live Demo:** [cx-resolve-ai.up.railway.app](https://cx-resolve-ai.up.railway.app)
+
 A production-grade **Tier-1 customer support chatbot** built on an **Agentic RAG pipeline** — powered by OpenAI, LangChain, and FAISS vector search.
 
 Upload any support document (PDF, DOCX, or TXT), ask questions in natural language, and get cited answers in seconds. Every response includes a full agent trace showing exactly how the answer was found.

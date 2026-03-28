@@ -1,0 +1,46 @@
+Billing and Payment FAQ
+
+Q: Why was I charged twice?
+A: Duplicate charges can occur due to a payment processing error. Please check your bank statement to confirm both charges settled. If confirmed, contact support with your transaction IDs and we will issue a refund for the duplicate charge within 3–5 business days.
+
+Q: How do I update my payment method?
+A: Go to Account Settings > Billing > Payment Methods. Click "Add Payment Method" to add a new card or bank account, then set it as your default. Old payment methods can be removed after a new default is set.
+
+Q: How do I cancel my subscription?
+A: Go to Account Settings > Billing > Subscription > Cancel Plan. Your access continues until the end of the current billing period. You will not be charged again after cancellation.
+
+Q: How do I get a refund?
+A: Refunds are available within 14 days of purchase for annual plans, and within 48 hours for monthly plans. Contact support with your order number and reason for the refund request.
+
+Q: Where can I find my invoices?
+A: Go to Account Settings > Billing > Invoice History. All invoices are available to download as PDF. Invoices are also emailed to your registered email address after each payment.
+
+Q: What payment methods do you accept?
+A: We accept Visa, Mastercard, American Express, Discover, PayPal, and bank transfers (ACH). Cryptocurrency payments are not currently supported.
+
+Q: How do I upgrade my plan?
+A: Go to Account Settings > Billing > Change Plan. Select your desired plan and confirm. Upgrades take effect immediately and you are billed a prorated amount for the remainder of the billing cycle.
+
+Q: How do I downgrade my plan?
+A: Go to Account Settings > Billing > Change Plan and select a lower tier. Downgrades take effect at the start of your next billing cycle. You retain current plan features until then.
+
+Q: What happens if my payment fails?
+A: If a payment fails, we retry the charge after 3, 5, and 7 days. You will receive an email notification each time. If all retries fail, your account is downgraded to the free plan. Update your payment method to restore access.
+
+Q: How do I apply a discount or coupon code?
+A: Go to Account Settings > Billing > Apply Coupon. Enter your coupon code and click Apply. Discounts are applied immediately to your next invoice or current balance.
+
+Q: Is there a free trial available?
+A: Yes, all plans include a 14-day free trial. No credit card is required to start. You will be prompted to add a payment method before the trial ends to continue with a paid plan.
+
+Q: Can I switch from monthly to annual billing?
+A: Yes. Go to Account Settings > Billing > Billing Cycle and select Annual. You will receive a prorated credit for unused days on your monthly plan, applied toward the annual subscription.
+
+Q: What is your refund policy for annual plans?
+A: Annual plans are eligible for a full refund within 14 days of purchase. After 14 days, a prorated refund is issued for unused months if you cancel. Contact support to initiate the process.
+
+Q: How do I add a billing address?
+A: Go to Account Settings > Billing > Billing Address. Enter your address and click Save. This address appears on your invoices and is used for tax calculation purposes.
+
+Q: Why did my price increase?
+A: Price changes are communicated via email at least 30 days in advance. Your current subscription rate is locked until the end of your billing cycle. Contact support if you received no prior notice of a price change.

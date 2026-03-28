@@ -1,0 +1,31 @@
+Order Management Guide
+
+Q: How do I track my order?
+A: Go to Orders > My Orders and click on your order number. You will see real-time tracking information and estimated delivery date. A tracking link is also emailed to you when your order ships.
+
+Q: How do I cancel an order?
+A: Orders can be cancelled within 1 hour of placement. Go to Orders > My Orders, find the order, and click Cancel. After 1 hour, the order enters processing and cannot be cancelled — you will need to request a return after delivery.
+
+Q: How do I return an item?
+A: Go to Orders > My Orders, select the item, and click "Return Item". Choose your reason for return and preferred refund method. A prepaid return label will be emailed to you. Returns must be initiated within 30 days of delivery.
+
+Q: How long does delivery take?
+A: Standard shipping takes 5–7 business days. Express shipping takes 2–3 business days. Overnight delivery is available for orders placed before 2 PM. Delivery times may vary during peak seasons.
+
+Q: My order arrived damaged. What should I do?
+A: Do not discard the damaged item or packaging. Take photos of the damage and contact support within 48 hours of delivery. We will arrange a replacement or refund at no additional cost.
+
+Q: How do I change my shipping address after placing an order?
+A: Address changes are possible only within 1 hour of placing the order. Contact support immediately with your order number and the new address. After 1 hour, the order is locked for processing and the address cannot be changed.
+
+Q: Why has my order not shipped yet?
+A: Orders typically ship within 1–2 business days. Delays can occur during high-demand periods. Check your order status in Orders > My Orders. If your order has not shipped within 5 business days, contact support.
+
+Q: How do I reorder a previous purchase?
+A: Go to Orders > Order History, find the order you want to repeat, and click "Reorder". All items are added to your cart. Update quantities as needed and proceed to checkout.
+
+Q: Can I change the items in my order after placing it?
+A: Order modifications are not possible after the order is confirmed. Cancel the order within 1 hour and place a new one with the correct items.
+
+Q: Where is my order confirmation email?
+A: Confirmation emails are sent immediately after purchase. Check your spam or junk folder. If not found within 30 minutes, verify your email address in Account Settings and contact support to resend the confirmation.

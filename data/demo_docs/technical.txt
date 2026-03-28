@@ -1,0 +1,46 @@
+Technical Support Guide
+
+Q: The app is not loading. What should I do?
+A: First, clear your browser cache and cookies, then try reloading the page. If the issue persists, try a different browser or device. Check our status page at status.example.com to see if there is an ongoing outage. If none of these resolve the issue, contact support with your browser version and a screenshot of any error messages.
+
+Q: How do I clear the app cache?
+A: On web: Press Ctrl+Shift+Delete (Windows) or Cmd+Shift+Delete (Mac), select "Cached images and files", and click Clear. On mobile: Go to your phone's Settings > Apps > select the app > Clear Cache.
+
+Q: The app is running slowly. How do I fix this?
+A: Close unused browser tabs and applications to free up memory. Ensure your internet connection is stable. Try switching to a wired connection if on WiFi. Clear your browser cache. If the issue persists on multiple devices, contact support.
+
+Q: How do I report a bug?
+A: Go to Help > Report a Bug or email support@example.com. Include a description of the issue, steps to reproduce it, your browser/OS version, and any error messages or screenshots. We prioritize and respond to bug reports within 24 hours.
+
+Q: I cannot log in even though my credentials are correct.
+A: Try resetting your password using the "Forgot Password" link. Clear your browser cookies and try again. Ensure Caps Lock is off. If you have 2FA enabled, ensure your authenticator app is synced. Contact support if the issue continues.
+
+Q: How do I enable desktop notifications?
+A: Go to Settings > Notifications > Desktop Notifications and toggle it on. Your browser will ask for permission — click Allow. Ensure your OS notification settings also allow notifications from your browser.
+
+Q: The video or audio is not working in calls.
+A: Check that your browser has permission to access your camera and microphone (click the lock icon in the address bar). Ensure no other application is using your camera/microphone. Try refreshing the page and rejoining the call.
+
+Q: How do I download the mobile app?
+A: Search for "CX Resolve AI" in the Apple App Store (iOS 14+) or Google Play Store (Android 8+). Download and install the app, then log in with your existing credentials.
+
+Q: How do I export my data?
+A: Go to Account Settings > Privacy > Export Data. Select the data types you want to export and click Request Export. You will receive a download link via email within 24 hours.
+
+Q: What browsers are supported?
+A: We support the latest two versions of Chrome, Firefox, Safari, and Edge. Internet Explorer is not supported. For the best experience, we recommend Chrome or Firefox.
+
+Q: How do I integrate with third-party tools?
+A: Go to Settings > Integrations. We support integrations with Slack, Jira, Salesforce, Zendesk, HubSpot, and more. Click the integration you want, follow the authorization steps, and configure your preferences.
+
+Q: I am getting an "Access Denied" error. What does this mean?
+A: This error means your account does not have permission to access that feature or resource. Contact your workspace administrator to request the necessary permissions, or upgrade your plan if it is a plan-restricted feature.
+
+Q: How do I reset the app to its default settings?
+A: Go to Settings > Advanced > Reset to Defaults. This resets your display preferences, notification settings, and shortcuts to factory defaults. Your data and account information are not affected.
+
+Q: The search function is not returning results.
+A: Ensure your search term is at least 3 characters. Try using different keywords. Clear your browser cache. If search remains broken, try logging out and back in. Contact support if the issue persists.
+
+Q: How do I check system status and uptime?
+A: Visit status.example.com for real-time system status, historical uptime, and incident reports. You can subscribe to status updates via email or RSS feed.
