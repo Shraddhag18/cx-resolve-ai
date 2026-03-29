@@ -303,9 +303,20 @@
   function removeTyping() { const t = document.getElementById('typing-indicator'); if (t) t.remove(); }
 
   // ── Chat ──
+  const GREETINGS = /^(hi|hello|hey|howdy|greetings|good (morning|afternoon|evening)|what's up|sup|yo)[!?.]*$/i;
+
   async function sendQuery() {
     const question = input.value.trim();
     if (!question || !API_KEY) return;
+
+    // Handle greetings locally — no need to hit the RAG pipeline
+    if (GREETINGS.test(question)) {
+      input.value = ''; input.style.height = 'auto';
+      appendMessage('user', `<div class="avatar">👤</div><div class="bubble-wrap"><div class="bubble">${escapeHtml(question)}</div></div>`);
+      appendMessage('bot', `<div class="avatar">🤖</div><div class="bubble-wrap"><div class="bubble">Hi! I'm your support assistant. Ask me anything about your documents and I'll find you a cited answer.</div><div class="meta"><span class="badge resolved">✓ Ready</span></div></div>`);
+      input.focus();
+      return;
+    }
 
     input.value = ''; input.style.height = 'auto';
     document.getElementById('send-btn').disabled = true;
