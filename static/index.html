@@ -70,16 +70,6 @@
     .badge.resolved { background: rgba(34,197,94,0.15); color: var(--green); }
     .badge.unresolved { background: rgba(239,68,68,0.15); color: var(--red); }
 
-    /* ── Agent Trace ── */
-    .trace-toggle { background: none; border: 1px solid var(--border); color: var(--text-muted); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; cursor: pointer; font-family: var(--font); transition: all 0.18s; }
-    .trace-toggle:hover { border-color: var(--accent); color: var(--accent); }
-    .trace-panel { display: none; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-top: 4px; }
-    .trace-panel.open { display: block; }
-    .trace-step { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 0.78rem; }
-    .trace-step:last-child { border-bottom: none; }
-    .trace-step-name { color: var(--accent); font-weight: 600; min-width: 130px; flex-shrink: 0; }
-    .trace-step-detail { color: var(--text-muted); line-height: 1.5; }
-
     /* ── Sources ── */
     .sources { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
     .sources-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2px; }
@@ -94,7 +84,6 @@
     .action-btn { background: none; border: 1px solid var(--border); color: var(--text-muted); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; cursor: pointer; transition: all 0.18s; font-family: var(--font); }
     .action-btn:hover { border-color: var(--accent); color: var(--accent); }
     .action-btn.active { border-color: var(--green); color: var(--green); }
-    .ticket-id { font-size: 0.72rem; color: var(--text-muted); font-family: monospace; margin-left: auto; }
 
     /* ── Typing ── */
     .typing { display: flex; align-items: center; gap: 5px; padding: 14px 16px; }
@@ -343,18 +332,6 @@
         ? `<span class="badge resolved">✓ Resolved</span>`
         : `<span class="badge unresolved">↑ Needs Escalation</span>`;
 
-      // Agent trace
-      const traceId = 'trace-' + Date.now();
-      const traceHtml = data.agent_steps && data.agent_steps.length ? `
-        <button class="trace-toggle" onclick="toggleTrace('${traceId}')">🔍 Agent Trace (${data.agent_steps.length} steps)</button>
-        <div class="trace-panel" id="${traceId}">
-          ${data.agent_steps.map(s => `
-            <div class="trace-step">
-              <span class="trace-step-name">${escapeHtml(s.step)}</span>
-              <span class="trace-step-detail">${escapeHtml(s.detail)}</span>
-            </div>`).join('')}
-        </div>` : '';
-
       // Sources (backend already filters < 45%, UI double-checks)
       const relevantSources = (data.sources || []).filter(s => s.relevance_score >= 0.45);
       const sourcesHtml = relevantSources.length === 0 ? '' : `
@@ -385,9 +362,7 @@
             <button class="action-btn" onclick="copyAnswer('${msgId}', this)">📋 Copy</button>
             <button class="action-btn" onclick="feedback(this, 'up')">👍</button>
             <button class="action-btn" onclick="feedback(this, 'down')">👎</button>
-            <span class="ticket-id">Ticket #${escapeHtml(data.ticket_id)}</span>
           </div>
-          ${traceHtml}
           ${sourcesHtml}
         </div>`);
 
@@ -398,15 +373,6 @@
 
     document.getElementById('send-btn').disabled = false;
     input.focus();
-  }
-
-  function toggleTrace(id) {
-    const panel = document.getElementById(id);
-    panel.classList.toggle('open');
-    const btn = panel.previousElementSibling;
-    btn.textContent = panel.classList.contains('open')
-      ? btn.textContent.replace('🔍', '▼')
-      : btn.textContent.replace('▼', '🔍');
   }
 
   function copyAnswer(msgId, btn) {
