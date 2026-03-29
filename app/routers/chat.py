@@ -46,7 +46,7 @@ async def query_endpoint(request: QueryRequest):
 
     latency_ms = round((time.perf_counter() - start) * 1000, 2)
     sources = format_cited_sources(docs, scores)
-    resolved = confidence >= 0.65
+    resolved = confidence >= 0.50
 
     ticket_id = record_query(question=request.question, resolved=resolved, latency_ms=latency_ms, confidence=confidence)
 
