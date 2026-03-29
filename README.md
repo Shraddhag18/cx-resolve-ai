@@ -1,6 +1,6 @@
 # CX Resolve AI
 
-> **Live Demo:** [cx-resolve-ai.up.railway.app](https://cx-resolve-ai.up.railway.app)
+> **Live Demo:** [web-production-e6e32.up.railway.app](https://web-production-e6e32.up.railway.app)
 
 A production-grade **Tier-1 customer support chatbot** built on an **Agentic RAG pipeline** — powered by OpenAI, LangChain, and FAISS vector search.
 
